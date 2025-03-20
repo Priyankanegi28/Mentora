@@ -1,13 +1,9 @@
-Here's the updated README without your GitHub account in the clone section:  
-
----
-
 # **MENTORA**  
 🚀 **AI-Driven Chatbot for Student Mental Health Support**  
 
 Mentora is an AI-powered chatbot designed to provide emotional support to students facing mental health challenges. By leveraging advanced Natural Language Processing (NLP) capabilities, Mentora offers a safe, confidential, and stigma-free environment where students can express their concerns and access valuable mental health resources.  
 
-![Mentora Banner](./assets/image.png)
+![Mentora Banner](https://github.com/Priyankanegi28/Mentora/blob/main/src/assets/image.png)
 
 
 ## 📖 Table of Contents  
@@ -101,6 +97,7 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 For any queries or collaborations, feel free to reach out!  
 
 📧 **Email:** negipriyanka949@gmail.com
+
 🌐 **GitHub:** Priyankanegi28  
 
 ---
