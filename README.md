@@ -7,7 +7,7 @@ Here's the updated README without your GitHub account in the clone section:
 
 Mentora is an AI-powered chatbot designed to provide emotional support to students facing mental health challenges. By leveraging advanced Natural Language Processing (NLP) capabilities, Mentora offers a safe, confidential, and stigma-free environment where students can express their concerns and access valuable mental health resources.  
 
-![Mentora Banner](assets/image.png)  
+![Mentora Banner](./assets/image.png)
 
 
 ## 📖 Table of Contents  
