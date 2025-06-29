@@ -508,7 +508,6 @@ const renderSquare = (index) => {
     setFlippedCards(newFlippedCards);
 
     if (newFlippedCards.length === 2) {
-      setMemoryMoves(prev => prev + 1);
       const [firstId, secondId] = newFlippedCards;
       const firstCard = memoryCards.find(card => card.id === firstId);
       const secondCard = memoryCards.find(card => card.id === secondId);
