@@ -36,3 +36,363 @@
     transform: rotate(360deg);
   }
 }
+
+/* Global responsive design fixes */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure proper viewport handling */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Responsive typography */
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+p {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+/* Responsive button styles */
+button {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
+}
+
+/* Responsive input styles */
+input, textarea, select {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  padding: clamp(8px, 2vw, 12px);
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(10px, 3vw, 20px);
+}
+
+/* Responsive grid layouts */
+.grid {
+  display: grid;
+  gap: clamp(10px, 2vw, 20px);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+/* Responsive flexbox */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Responsive spacing */
+.p-responsive {
+  padding: clamp(10px, 3vw, 20px);
+}
+
+.m-responsive {
+  margin: clamp(10px, 3vw, 20px);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .flex {
+    flex-direction: column;
+  }
+}
+
+/* Handle very small screens */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 8px;
+  }
+  
+  button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Handle landscape orientation on mobile */
+@media (orientation: landscape) and (max-height: 500px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    margin-bottom: 8px;
+  }
+}
+
+/* Ensure modals are responsive */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: clamp(10px, 3vw, 20px);
+}
+
+.modal-content {
+  background-color: #222;
+  color: #fff;
+  padding: clamp(15px, 4vw, 25px);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* Responsive card styles */
+.card {
+  background-color: #333;
+  border-radius: 10px;
+  padding: clamp(15px, 4vw, 25px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive image handling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive table styles */
+table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  table {
+    display: table;
+  }
+}
+
+/* Ensure proper scrolling */
+.scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive navigation */
+.nav-responsive {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(10px, 2vw, 20px);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .nav-responsive {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Responsive form styles */
+.form-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vw, 20px);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+  .form-responsive {
+    flex-direction: row;
+    align-items: end;
+  }
+  
+  .form-group {
+    flex: 1;
+  }
+}
+
+/* Responsive text alignment */
+@media (max-width: 480px) {
+  .text-center-mobile {
+    text-align: center;
+  }
+}
+
+/* Responsive visibility */
+.hide-mobile {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+  
+  .show-mobile {
+    display: block;
+  }
+}
+
+/* Responsive aspect ratios */
+.aspect-ratio {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.aspect-ratio > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive spacing utilities */
+.gap-responsive {
+  gap: clamp(8px, 2vw, 16px);
+}
+
+.margin-responsive {
+  margin: clamp(8px, 2vw, 16px);
+}
+
+.padding-responsive {
+  padding: clamp(8px, 2vw, 16px);
+}
+
+/* Ensure proper touch targets on mobile */
+@media (max-width: 768px) {
+  button, 
+  a, 
+  input[type="button"], 
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Responsive font weights */
+@media (max-width: 480px) {
+  .font-weight-mobile {
+    font-weight: 600;
+  }
+}
+
+/* Responsive borders */
+@media (max-width: 480px) {
+  .border-mobile {
+    border: 1px solid #ddd;
+  }
+}
+
+/* Responsive shadows */
+@media (max-width: 768px) {
+  .shadow-mobile {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
