@@ -7,10 +7,12 @@ import LoginPage from './Components/LoginPage';
 import ChatInterface from './Components/ChatInterface';
 import MoodTracker from './Components/MoodTracker';
 import SelfCareResources from './Components/SelfCareResources';
-import Storyteller from './Components/Storyteller';
 import QuestionAns from './Components/QuestionAns'; // Import the QuestionAns component
 import Sleeptool from './Components/Sleeptool';
 import Creative from './Components/Creative';
+import CopingSkillsToolbox from './Components/CopingSkillsToolbox';
+import Profile from './Components/Profile';
+import Settings from './Components/Settings';
 
 // Import icons from react-icons/fa for web
 import { FaCommentAlt, FaHeartbeat, FaLeaf, FaRainbow } from 'react-icons/fa';
@@ -74,6 +76,10 @@ function App() {
         <Route path="/sleeptool" element={<Sleeptool />} />
 
         <Route path="/creative" element={<Creative />} />
+
+        <Route path="/profile" element={<Profile user={user} />} />
+
+        <Route path="/settings" element={<Settings />} />
         
       </Routes>
     </Router>
@@ -96,7 +102,7 @@ const ChatInterfaceWithTabs = ({ isAuthenticated, isGuestMode, user, onSignOut }
         } />
         <Route path="mood-tracker" element={<MoodTracker />} />
         <Route path="self-care" element={<SelfCareResources />} />
-        <Route path="story" element={<Storyteller />} />
+        <Route path="coping-skills" element={<CopingSkillsToolbox />} />
         {/* Default route if none of the paths match */}
         <Route path="*" element={
           <ChatInterface 
@@ -123,14 +129,14 @@ const ChatInterfaceWithTabs = ({ isAuthenticated, isGuestMode, user, onSignOut }
         <FaLeaf />
         <span>Self-Care</span>
       </Link>
-      <Link to="story" className="nav-link">
+      <Link to="coping-skills" className="nav-link">
         <FaRainbow />
-        <span>Storyteller</span>
+        <span>Coping Skills</span>
       </Link>
     </div>
 
     {/* Responsive styles */}
-    <style jsx>{`
+    <style>{`
       .app-container {
         display: flex;
         flex-direction: column;
@@ -228,7 +234,7 @@ const ChatInterfaceWithTabs = ({ isAuthenticated, isGuestMode, user, onSignOut }
         }
 
         .nav-link {
-          padding: 4px 6px;
+          padding: 5px 6px;
           min-width: 45px;
         }
 
@@ -241,28 +247,47 @@ const ChatInterfaceWithTabs = ({ isAuthenticated, isGuestMode, user, onSignOut }
         }
       }
 
-      /* Ensure content doesn't overflow */
       @media (max-height: 600px) {
         .main-content {
           padding-bottom: 60px;
         }
+
+        .bottom-nav {
+          padding: 5px 0;
+        }
+
+        .nav-link {
+          padding: 4px 5px;
+        }
+
+        .nav-link svg {
+          font-size: 0.8rem;
+          margin-bottom: 2px;
+        }
+
+        .nav-link span {
+          font-size: 0.6rem;
+        }
       }
 
-      /* Fix for white line at bottom */
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: #141414;
-        overflow-x: hidden;
-      }
+      /* Ensure proper spacing on very small screens */
+      @media (max-width: 360px) {
+        .main-content {
+          padding-bottom: 60px;
+        }
 
-      html {
-        background-color: #141414;
-      }
+        .nav-link {
+          padding: 4px 4px;
+          min-width: 40px;
+        }
 
-      #root {
-        background-color: #141414;
-        min-height: 100vh;
+        .nav-link svg {
+          font-size: 0.8rem;
+        }
+
+        .nav-link span {
+          font-size: 0.6rem;
+        }
       }
     `}</style>
   </div>

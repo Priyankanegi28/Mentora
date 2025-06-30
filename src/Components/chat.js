@@ -13,6 +13,39 @@ const mentors = [
   { name: "Relationship Rescuer", image: relationshipAvtar }
 ];
 
+const mentorFallbacks = {
+  'Mood Mentor': [
+    "Remember, every emotion is valid. You're doing your best, and that's enough!",
+    "Even on tough days, small joys can be found. What's one thing you're grateful for today?",
+    "You have the strength to get through this. I believe in you!",
+    "Taking care of your mood is self-care. Try a deep breath or a favorite song!"
+  ],
+  'Stress Buster': [
+    "Stress is a sign you care. Take a moment to pause and breathe—you've got this!",
+    "You're stronger than your stress. Try breaking tasks into small steps.",
+    "Remember, it's okay to ask for help. You're not alone!",
+    "A little self-kindness goes a long way. What's one thing you can do for yourself right now?"
+  ],
+  'Dream Weaver': [
+    "Dreams can reveal so much about us. Keep exploring your inner world!",
+    "Rest is important. If you're struggling with sleep, try a calming bedtime routine.",
+    "Your dreams are unique to you. Trust your intuition as you reflect on them.",
+    "Even a short nap can refresh your mind. Take care of yourself!"
+  ],
+  'Anxiety Ally': [
+    "Anxiety is tough, but so are you. Try grounding yourself in the present moment.",
+    "You're not alone in this. Deep breaths can help calm your mind.",
+    "Remember, thoughts are not facts. You have the power to choose your response.",
+    "Confidence grows with practice. Celebrate your small wins!"
+  ],
+  'Relationship Rescuer': [
+    "Healthy relationships start with self-respect. You deserve kindness and understanding.",
+    "Communication is key. Express your feelings honestly and listen with empathy.",
+    "Every relationship has ups and downs. Be patient with yourself and others.",
+    "You are worthy of love and support. Don't hesitate to reach out to those you trust."
+  ]
+};
+
 const Chat = () => {
   const [selectedMentor, setSelectedMentor] = useState(null);
   const [chatHistory, setChatHistory] = useState([]);
@@ -42,27 +75,64 @@ const Chat = () => {
     }
   };
 
+  const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
   const fetchChatbotData = async (mentorName, userMessage) => {
     try {
       const response = await fetch("/chatresponse.json");
       const data = await response.json();
-      if (!data[mentorName]) return;
+      if (!data[mentorName]) return { reply: "Sorry, I couldn't find that mentor." };
 
       const mentorData = data[mentorName];
       const userMessageLower = userMessage.trim().toLowerCase();
 
+      // Try to match an option at the current level
       const matchedOption = mentorData.options.find(
         (option) => option.toLowerCase() === userMessageLower
       );
 
       if (matchedOption) {
         const responseMessage = mentorData.responses?.[matchedOption];
-        return responseMessage
-          ? { reply: responseMessage.message, options: responseMessage.followUp || [] }
-          : { reply: "I don't have an answer for that. Can you try something else?" };
+        if (responseMessage) {
+          // If there are followUp options, show them
+          if (responseMessage.followUp) {
+            return {
+              reply: responseMessage.message,
+              options: responseMessage.followUp
+            };
+          }
+          // If there are responseMessages, pick one randomly
+          if (responseMessage.responseMessages) {
+            const keys = Object.keys(responseMessage.responseMessages);
+            if (keys.length > 0) {
+              return {
+                reply: responseMessage.message + '\n' + getRandom(responseMessage.responseMessages[keys[0]]),
+                options: responseMessage.options || []
+              };
+            }
+          }
+          // Otherwise, just return the message
+          return {
+            reply: responseMessage.message,
+            options: responseMessage.options || []
+          };
+        }
       }
 
-      return { reply: "I don't have an answer for that. Can you try something else?" };
+      // Try to match a follow-up option in deeper levels
+      for (const key in mentorData.responses) {
+        const resp = mentorData.responses[key];
+        if (resp.responseMessages && resp.responseMessages[userMessage]) {
+          const possibleReplies = resp.responseMessages[userMessage];
+          return {
+            reply: getRandom(Array.isArray(possibleReplies) ? possibleReplies : [possibleReplies]),
+            options: resp.options || []
+          };
+        }
+      }
+
+      // Fallback: supportive, mentor-specific message
+      return { reply: getRandom(mentorFallbacks[mentorName] || ["I'm here to support you!"]) };
     } catch (error) {
       console.error("Error fetching chatbot data:", error);
       return { reply: "Something went wrong. Please try again." };

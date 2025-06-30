@@ -744,7 +744,7 @@ const renderSquare = (index) => {
         ))}
       </div>
 
-      <h1 style={styles.title}>Mood Tracker</h1>
+      <h1 style={{ textAlign: 'center', marginBottom: 18, fontSize: '2.2rem', letterSpacing: 1, background: 'linear-gradient(45deg, #667eea, #764ba2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Mood Tracker</h1>
       
       {/* Quick Mood Slider */}
       <div style={styles.moodSliderContainer}>

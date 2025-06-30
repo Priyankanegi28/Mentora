@@ -1,8 +1,8 @@
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { auth } from '../firebase/firebase'; // Adjust the path as needed
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import backgroundImage from '../assets/loginBackground.jpg'; // Ensure the correct path for your image
+import { auth } from '../firebase/firebase'; // Adjust the path as needed
 
 const LoginPage = () => {
   const navigate = useNavigate(); // Initialize useNavigate for navigation

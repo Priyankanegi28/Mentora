@@ -11,11 +11,13 @@ const ChatInterface = ({ isAuthenticated, isGuestMode, user, onSignOut }) => {
   };
 
   const handleProfileAction = (action) => {
-    console.log(action);
     setShowProfileMenu(false);
-    
     if (action === 'Logout') {
       onSignOut();
+    } else if (action === 'Profile') {
+      navigate('/profile');
+    } else if (action === 'Settings') {
+      navigate('/settings');
     }
   };
 
@@ -272,7 +274,7 @@ const ChatInterface = ({ isAuthenticated, isGuestMode, user, onSignOut }) => {
         
         <div style={styles.headerContent}>
           <div style={styles.heading}>Here is your perfect Chat partner</div>
-          <div style={styles.subheading}>Mentora</div>
+          <h1 style={{ textAlign: 'center', marginBottom: 18, fontSize: '2.2rem', letterSpacing: 1, background: 'linear-gradient(45deg, #667eea, #764ba2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Mentora</h1>
         </div>
         
         <div style={{ width: '40px' }}></div> {/* Spacer for balance */}
