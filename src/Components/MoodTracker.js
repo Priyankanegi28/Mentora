@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const MoodTracker = () => {
   const [showQuizModal, setShowQuizModal] = useState(false);
@@ -737,14 +737,10 @@ const renderSquare = (index) => {
 
   return (
     <div style={styles.container}>
-      {/* Animated Background */}
-      <div style={styles.particleBackground}>
-        {[...Array(20)].map((_, i) => (
-          <div key={i} style={styles.particle} />
-        ))}
-      </div>
+      {/* Removed Animated Background for professionalism */}
+      {/* <div style={styles.particleBackground}> ... </div> */}
 
-      <h1 style={{ textAlign: 'center', marginBottom: 18, fontSize: '2.2rem', letterSpacing: 1, background: 'linear-gradient(45deg, #667eea, #764ba2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Mood Tracker</h1>
+      <h1 style={styles.title}>Mood Tracker</h1>
       
       {/* Quick Mood Slider */}
       <div style={styles.moodSliderContainer}>
@@ -775,7 +771,7 @@ const renderSquare = (index) => {
             style={{
               ...styles.enhancedCard,
               background: feature.gradient,
-              animation: `${feature.animation} 2s infinite`
+              // Removed animation
             }}
             onClick={feature.onClick}
             className="enhanced-card"
@@ -1686,35 +1682,16 @@ const styles = {
     position: "relative",
     overflow: "hidden",
   },
-  particleBackground: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    pointerEvents: "none",
-    zIndex: 0,
-  },
-  particle: {
-    position: "absolute",
-    width: "4px",
-    height: "4px",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderRadius: "50%",
-    animation: "float 6s infinite",
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    animationDelay: `${Math.random() * 6}s`,
-  },
   title: {
-    marginBottom: "30px",
-    fontSize: "clamp(2rem, 5vw, 3rem)",
-    letterSpacing: "2px",
-    fontWeight: "bold",
-    background: "linear-gradient(45deg, #667eea, #764ba2)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    position: "relative",
+    textAlign: 'center',
+    marginBottom: 18,
+    fontSize: '2.2rem',
+    letterSpacing: 1,
+    fontWeight: 'bold',
+    background: 'linear-gradient(45deg, #667eea, #764ba2)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    position: 'relative',
     zIndex: 1,
   },
   moodSliderContainer: {

@@ -18,7 +18,13 @@ const mentorFallbacks = {
     "Remember, every emotion is valid. You're doing your best, and that's enough!",
     "Even on tough days, small joys can be found. What's one thing you're grateful for today?",
     "You have the strength to get through this. I believe in you!",
-    "Taking care of your mood is self-care. Try a deep breath or a favorite song!"
+    "Taking care of your mood is self-care. Try a deep breath or a favorite song!",
+    "If you want to talk, I'm here to listen. Sometimes sharing helps lighten the load.",
+    "Would you like a tip for feeling a little better right now?",
+    "It's okay to have ups and downs. What helps you feel a bit better when things are tough?",
+    "You matter, and your feelings matter. Is there something kind you can do for yourself today?",
+    "Sometimes, a small act of self-care can make a big difference. Want a suggestion?",
+    "I'm here for you, no matter what. Would you like to try a calming exercise together?"
   ],
   'Stress Buster': [
     "Stress is a sign you care. Take a moment to pause and breathe—you've got this!",
@@ -139,20 +145,50 @@ const Chat = () => {
     }
   };
 
+  // Update handleOptionClick and handleUserInput to only show options if the reply is an object with options AND the next response is also an object (not just advice)
   const handleOptionClick = async (option) => {
     if (!selectedMentor) return;
     setChatHistory((prev) => [...prev, { sender: "user", text: option }]);
     const response = await fetchChatbotData(selectedMentor, option);
-    setChatHistory((prev) => [...prev, { sender: "bot", text: response.reply }]);
-    setMentorOptions(response.options || []);
+    if (response.reply && typeof response.reply === 'object') {
+      // Only show options if the next response is also an object (not just advice)
+      const hasOptions = Array.isArray(response.reply.options) && response.reply.options.length > 0;
+      // Check if the next response for each option is an object or just advice
+      let showOptions = false;
+      if (hasOptions && response.reply.responseMessages) {
+        // If any responseMessage for an option is an object, show options
+        showOptions = response.reply.options.some(opt => {
+          const resp = response.reply.responseMessages[opt];
+          return typeof resp === 'object' && !Array.isArray(resp);
+        });
+      }
+      setChatHistory((prev) => [...prev, { sender: "bot", text: response.reply }]);
+      setMentorOptions(showOptions ? response.reply.options : []);
+    } else {
+      setChatHistory((prev) => [...prev, { sender: "bot", text: response.reply }]);
+      setMentorOptions(response.options || []);
+    }
   };
 
   const handleUserInput = async () => {
     if (!userInput.trim() || !selectedMentor) return;
     setChatHistory((prev) => [...prev, { sender: "user", text: userInput }]);
     const response = await fetchChatbotData(selectedMentor, userInput);
-    setChatHistory((prev) => [...prev, { sender: "bot", text: response.reply }]);
-    setMentorOptions(response.options || []);
+    if (response.reply && typeof response.reply === 'object') {
+      const hasOptions = Array.isArray(response.reply.options) && response.reply.options.length > 0;
+      let showOptions = false;
+      if (hasOptions && response.reply.responseMessages) {
+        showOptions = response.reply.options.some(opt => {
+          const resp = response.reply.responseMessages[opt];
+          return typeof resp === 'object' && !Array.isArray(resp);
+        });
+      }
+      setChatHistory((prev) => [...prev, { sender: "bot", text: response.reply }]);
+      setMentorOptions(showOptions ? response.reply.options : []);
+    } else {
+      setChatHistory((prev) => [...prev, { sender: "bot", text: response.reply }]);
+      setMentorOptions(response.options || []);
+    }
     setUserInput("");
   };
 
@@ -176,7 +212,7 @@ const Chat = () => {
       <div className="chat-box">
         {chatHistory.map((msg, index) => (
           <div key={index} className={msg.sender === "bot" ? "bot-msg" : "user-msg"}>
-            {msg.text}
+            {typeof msg.text === 'object' && msg.text !== null ? msg.text.message : msg.text}
           </div>
         ))}
 
@@ -185,7 +221,7 @@ const Chat = () => {
           <div className="options">
             {mentorOptions.map((option, index) => (
               <button key={index} className="option-button" onClick={() => handleOptionClick(option)}>
-                {option}
+                {typeof option === 'object' && option !== null ? option.message || JSON.stringify(option) : option}
               </button>
             ))}
           </div>
