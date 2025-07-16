@@ -1,103 +1,109 @@
-# **MENTORA**  
-🚀 **AI-Driven Chatbot for Student Mental Health Support**  
+# MENTORA  
+🚀 **Student Mental Health Support Chatbot**  
 
-Mentora is an AI-powered chatbot designed to provide emotional support to students facing mental health challenges. By leveraging advanced Natural Language Processing (NLP) capabilities, Mentora offers a safe, confidential, and stigma-free environment where students can express their concerns and access valuable mental health resources.  
-
-![Mentora Banner](https://github.com/Priyankanegi28/Mentora/blob/main/src/assets/image.png)
-
-
-## 📖 Table of Contents  
-- Introduction  
-- Mental Health Challenges  
-- Purpose of Mentora  
-- Integration  
-- Key Features  
-- Technologies Used  
-- Installation & Setup  
-- Contributing  
-- License  
-- Contact  
-
-## 📌 Introduction  
-
-### 🧠 Mental Health Challenges  
-- Students today face increasing mental health burdens due to academic pressure, family expectations, financial stress, and social isolation.  
-- Common issues include anxiety, depression, and chronic stress, which can significantly impact academic and social performance.  
-- The stigma surrounding mental health makes it difficult for students to seek help openly.  
-- Lack of timely support can lead to severe consequences, including substance abuse, dropouts, or self-harm.  
-
-### 🎯 Purpose of Mentora  
-- Mentora fills the gap in mental health resources by providing an AI-driven chatbot that offers instant emotional support.  
-- The platform ensures **24/7 accessibility**, fostering a **safe and non-judgmental space** for students.  
-- By promoting **empathy-driven interactions**, Mentora reduces barriers to seeking help and raises mental health awareness.  
-- The chatbot educates users about mental health, empowering them with **self-help techniques and stress management resources**.  
-
-## 🔗 Integration  
-- Mentora utilizes the **Gemini API**, integrating advanced NLP technology for meaningful and personalized conversations.  
-- It interprets users' **emotions from text or voice inputs**, enabling a deep understanding of their mental state.  
-- The chatbot provides tailored responses that feel **genuine and empathetic**, enhancing engagement.  
-- **Real-time processing** ensures quick and accurate replies to user concerns, making interactions impactful.  
-- **Future updates** aim to include multilingual support, voice-based interactions, and enhanced sentiment analysis.  
-
-## 🌟 Key Features  
-✅ **Centralized Hub:** Provides access to mental health resources, including articles, helplines, and wellness tips.  
-✅ **Educational Content:** Raises awareness and offers self-help techniques tailored to users’ emotional needs.  
-✅ **Confidential & Secure:** Ensures privacy, allowing students to express themselves without fear.  
-✅ **Judgment-Free Zone:** Encourages open discussions, helping reduce mental health stigma.  
-✅ **Future Enhancements:** Planned features include multilingual support, voice interactions, and advanced sentiment analysis.  
-
-## 🛠 Technologies Used  
-
-### 🎨 UI/UX Design  
-- **Figma** was used for designing an intuitive, visually appealing, and user-friendly interface.  
-- Ensures clear navigation and responsive layouts across various devices.  
-
-### ⚛️ Frontend  
-- **ReactJS** powers the frontend, providing an **interactive and dynamic user experience**.  
-- Supports a **Single Page Application (SPA)** model for seamless transitions.  
-
-### 🏗 Backend  
-- **Firebase Realtime Database** ensures secure, real-time data management.  
-- Scalable infrastructure to handle growing user demands efficiently.  
-
-### 🤖 NLP Framework  
-- **Gemini API** integrates cutting-edge NLP capabilities for empathetic and context-aware interactions.  
-- Enables **dynamic responses based on previous conversations**.  
-
-## 🛠 Installation & Setup  
-
-### **Clone the Repository**  
-```sh
-git clone https://github.com/your-username/mentora.git
-cd mentora
-```
-
-### **Install Dependencies**  
-```sh
-npm install
-```
-
-### **Run the Development Server**  
-```sh
-npm start
-```
-
-## 🚀 Contributing  
-We welcome contributions! If you'd like to contribute:  
-
-1. **Fork** the repository.  
-2. **Create a new branch** (`feature-branch`).  
-3. **Commit your changes**.  
-4. **Push to your fork and create a pull request**.  
-
-## 📝 License  
-This project is licensed under the **MIT License** - see the LICENSE file for details.  
-
-## 📩 Contact  
-For any queries or collaborations, feel free to reach out!  
-
-📧 **Email:** negipriyanka949@gmail.com
-
-🌐 **GitHub:** Priyankanegi28  
+Mentora is a web-based chatbot designed to provide emotional support and self-care resources to students facing mental health challenges. Mentora offers a safe, confidential, and stigma-free environment for students to express their concerns, track their mood, and access valuable mental health resources.
 
 ---
+
+## 📖 **Table of Contents**  
+- [Introduction](#-introduction)  
+- [Mental Health Challenges](#-mental-health-challenges)  
+- [Purpose of Mentora](#-purpose-of-mentora)  
+- [Key Features](#-key-features)  
+- [Screenshots](#-screenshots)  
+- [Technologies Used](#-technologies-used)  
+- [Installation & Setup](#-installation--setup)  
+- [Contributing](#-contributing)  
+- [License](#-license)  
+- [Contact](#-contact)  
+
+---
+
+## 📌 **Introduction**  
+Student mental health is a growing concern, with many facing academic pressure, family expectations, financial stress, and social isolation. Mentora aims to bridge the gap in mental health support by providing instant, empathetic, and accessible help through a friendly chatbot and a suite of self-care tools.
+
+---
+
+## 🧠 **Mental Health Challenges**  
+- Academic, social, and family pressures can lead to **anxiety, depression, and chronic stress**  
+- **Stigma and lack of resources** often prevent students from seeking help  
+- Untreated mental health issues can impact **academic performance and overall well-being**  
+
+---
+
+## 🎯 **Purpose of Mentora**  
+- **Instant Support**: 24/7 access to emotional support and self-care tools  
+- **Safe Space**: Confidential, non-judgmental environment for open expression  
+- **Resource Hub**: Centralized mental health resources and educational content  
+
+---
+
+## 🌟 **Key Features**  
+### 🤖 **Chatbot (Mentora)**  
+- Friendly, supportive conversations tailored to student emotions  
+### 📊 **Mood Tracker**  
+- Log daily moods and visualize emotional trends  
+### 🧘 **Self-Care Resources**  
+- Guided meditation, grounding techniques, and sleep support  
+### � **Coping Skills Toolbox**  
+- Personalized strategies for stress and anxiety  
+### ⚙️ **Profile & Settings**  
+- Manage account and privacy preferences  
+### 🔒 **Confidential & Secure**  
+- Private conversations with secure data handling  
+
+---
+
+## 🖼️ **Screenshots**  
+![Mentora Banner](https://github.com/Priyankanegi28/Mentora/blob/main/src/assets/image.png)
+ 
+
+---
+
+## 🛠 **Technologies Used**  
+| Category       | Technologies                          |
+|----------------|---------------------------------------|
+| **Frontend**   | ReactJS (SPA with modern UI/UX)       |
+| **Backend**    | Firebase Realtime Database            |
+| **Design**     | Figma (UI/UX prototyping)             |
+| **Other**      | Web Audio API, Custom CSS-in-JS       |
+
+---
+
+## ⚡ **Installation & Setup**  
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/Priyankanegi28/Mentora.git
+   cd Mentora
+   ```
+2. **Install dependencies**  
+   ```bash
+   npm install
+   ```
+3. **Run the development server**  
+   ```bash
+   npm start
+   ```
+4. **(Optional) Configure Firebase**  
+   Add your config to `src/firebase/firebase.js`
+
+---
+
+## 🤝 **Contributing**  
+We welcome contributions!  
+1. Fork the repository  
+2. Create a feature branch (`git checkout -b feature-branch`)  
+3. Commit your changes (`git commit -m 'Add new feature'`)  
+4. Push to the branch (`git push origin feature-branch`)  
+5. Open a pull request  
+
+---
+
+## 📝 **License**  
+MIT License - See [LICENSE](LICENSE) file for details  
+
+---
+
+## 📩 **Contact**  
+- **Email**: [negipriyanka949@gmail.com](mailto:negipriyanka949@gmail.com)  
+- **GitHub**: [Priyankanegi28](https://github.com/Priyankanegi28)  
